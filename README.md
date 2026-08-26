@@ -175,8 +175,7 @@ The current setup is primarily developed and tested on **macOS** with **Python 3
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dog_matist.git
-cd dog_matist
+git clone https://github.com/The-DuO-0/dog_matist.gitcd dog_matist
 ```
 
 Run the setup script:
@@ -234,25 +233,13 @@ The more useful question is whether persistent replay, continual parameter updat
 
 Some of the questions I am currently interested in are:
 
-1. **Evaluation reliability**  
-   How many games and how much position diversity are needed before a champion–challenger result is trustworthy?
-
-2. **Long-term stagnation**  
+1.  **Long-term stagnation**  
    When one champion survives many generations, is the system converging, under-exploring, or evaluating too conservatively?
 
-3. **Specialist preservation**  
-   How can useful models that are strong in specific openings or positions be preserved without keeping every historical model active?
-
-4. **Opening generalization**  
+2. **Opening generalization**  
    Does increasing opening diversity produce genuinely stronger agents or simply redistribute performance across positions?
 
-5. **Population diversity**  
-   Can multiple candidate roles help avoid repeatedly producing near-identical challengers?
-
-6. **Compute efficiency**  
-   Which parts of self-play, search, training, and evaluation provide the most improvement per unit of local compute?
-
-7. **Continual improvement**  
+3. **Continual improvement**  
    Under what conditions does repeated self-play and selection produce stronger generations rather than oscillation or regression?
 
 ---
