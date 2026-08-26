@@ -175,7 +175,8 @@ The current setup is primarily developed and tested on **macOS** with **Python 3
 Clone the repository:
 
 ```bash
-git clone https://github.com/The-DuO-0/dog_matist.gitcd dog_matist
+git clone https://github.com/The-DuO-0/dog_matist.git
+cd dog_matist
 ```
 
 Run the setup script:
