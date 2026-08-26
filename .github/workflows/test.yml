@@ -2,7 +2,7 @@ name: dog_matist tests
 
 on:
   push:
-    branches: [dog-matist-v2]
+    branches: [main]
   pull_request:
 
 concurrency:
