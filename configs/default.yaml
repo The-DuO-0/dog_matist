@@ -1,0 +1,154 @@
+project:
+  name: dog_matist
+  # Keep the old state directory on purpose so existing champion/checkpoints/history survive v2.
+  state_dir: ~/.darwinchess
+  seed: 20260817
+
+model:
+  channels: 64
+  residual_blocks: 4
+  neural_cp_scale: 650.0
+
+evolution:
+  initial_classical_mix: 1.0
+  min_classical_mix: 0.20
+  classical_mix_step: 0.05
+  mix_mutation_min_examples: 256
+
+search:
+  depth: 2
+  quiescence_depth: 3
+  policy_ordering: true
+  transposition_size: 200000
+  max_game_plies: 240
+
+training:
+  batch_size: 128
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  value_loss_weight: 1.0
+  policy_loss_weight: 0.35
+  replay_recent_fraction: 0.35
+  replay_capacity: 2000000
+  steps_per_cycle: 160
+  min_examples_before_training: 256
+  gradient_clip: 1.0
+
+selfplay:
+  games_per_cycle: 8
+  opening_temperature: 0.8
+  temperature_plies: 16
+  top_k: 5
+  resign_threshold_cp: -1100
+  resign_consecutive: 5
+  allow_resign_after_ply: 50
+  opening_curriculum:
+    enabled: true
+    standard: 0.35
+    curated: 0.35
+    uncommon: 0.20
+    controlled_random: 0.10
+
+league:
+  enabled: true
+  population_size: 3
+  shared_step_fraction: 0.55
+  explorer_opening_fraction: 0.65
+  specialist_opening_fraction: 0.75
+  anchor_pairs: 1
+  playoff_pairs: 1
+  k_factor: 20.0
+  specialist_min_games: 2
+  specialist_score: 0.75
+  specialist_margin: 0.20
+  specialist_harvest_games: 1
+  depth: 2
+  max_game_plies: 220
+
+arena:
+  games: 8
+  adaptive: true
+  min_games: 8
+  max_games: 30
+  promotion_score: 0.55
+  promotion_wilson_z: 1.2816  # ~90% one-sided confidence guard
+  depth: 2
+  max_game_plies: 220
+  paired_openings: true
+
+resources:
+  default_mode: normal
+  eco:
+    search_device: cpu
+    search_depth: 1
+    selfplay_games_per_cycle: 2
+    training_steps_per_cycle: 50
+    arena_games: 4
+    nice: 12
+    torch_threads: 2
+    population_size: 2
+    league_depth: 1
+    league_max_game_plies: 120
+    league_anchor_pairs: 1
+    league_playoff_pairs: 1
+    arena_min_games: 4
+    arena_max_games: 8
+    arena_depth: 1
+    arena_max_game_plies: 140
+    selfplay_workers: 1
+    arena_workers: 1
+    adaptive_workers: false
+    parallel_selfplay: false
+  normal:
+    search_device: cpu
+    search_depth: 2
+    selfplay_games_per_cycle: 6
+    training_steps_per_cycle: 120
+    arena_games: 6
+    nice: 8
+    torch_threads: 4
+    population_size: 3
+    league_depth: 2
+    league_max_game_plies: 180
+    league_anchor_pairs: 1
+    league_playoff_pairs: 1
+    arena_min_games: 6
+    arena_max_games: 16
+    arena_depth: 2
+    arena_max_game_plies: 180
+    selfplay_workers: 2
+    arena_workers: 1
+    adaptive_workers: false
+    parallel_selfplay: false
+  night:
+    search_device: cpu
+    search_depth: 2
+    selfplay_games_per_cycle: 12
+    training_steps_per_cycle: 240
+    arena_games: 10
+    nice: 5
+    torch_threads: 6
+    population_size: 3
+    league_depth: 2
+    league_max_game_plies: 220
+    league_anchor_pairs: 1
+    league_playoff_pairs: 1
+    arena_min_games: 10
+    arena_max_games: 30
+    arena_depth: 2
+    arena_max_game_plies: 220
+    selfplay_workers: 3
+    arena_workers: 2
+    adaptive_workers: true
+    parallel_selfplay: true
+
+teacher:
+  stockfish_path: null
+  enabled: false
+  depth: 14
+  positions_per_cycle: 0
+
+dialogue:
+  language: zh
+  ollama_model: null
+  ollama_url: http://127.0.0.1:11434

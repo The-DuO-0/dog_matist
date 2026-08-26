@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dog-matist"
+version = "2.0.0-dev1"
+description = "Persistent self-evolving conversational chess agent for local machines"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "dog_matist Project"}]
+dependencies = [
+  "chess==1.11.2",
+  "numpy>=1.26",
+  "torch>=2.3",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+studio = ["PySide6>=6.7", "matplotlib>=3.8"]
+
+[project.scripts]
+dog-matist = "darwinchess.cli:main"
+# Compatibility alias so existing launch scripts do not break during migration.
+darwinchess = "darwinchess.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["darwinchess*", "studio*", "dogmatist_v2*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,34 @@
+.DS_Store
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local dog_matist / DarwinChess runtime state
+.darwinchess/
+.dog_matist/
+checkpoints/
+checkpoint/
+models/
+runs/
+logs/
+exports/
+replay/
+replay_buffer/
+
+# Trained weights and local databases
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.sqlite
+*.sqlite3
+*.db
+
+# Archives and large local artifacts
+*.zip
+*.tar
+*.tar.gz
